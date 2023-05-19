@@ -1,0 +1,142 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+
+<link rel="stylesheet" href="{% static 'css/table.css'%}?v={{ version_number }}">
+</head>
+<body>
+
+  
+
+    <div class="table-disp"><a href="{%url 'dashboard'%}"><button>Cutomers</button></a>
+        <a href="{%url 'addproducts'%}"><button>Products</button></a>
+        <a href="{%url 'addorders'%}"><button>Orders</button></a>
+        <a href="{%url 'addcategories'%}"><button>Categories</button></a></div>
+
+
+
+    <div>
+        {%if customers%}
+        <h1>Customers Table</h1>
+
+        <table>
+            <tr>
+                <th>Name</th>
+                <th>Username</th>
+                <th>Email</th>
+                <th>Password</th>
+                <th>Is Staff</th>
+                <th>Is Superuser</th>
+            </tr>
+    
+            {% for customer in customers %}
+                <tr>
+                    <td>{{ customer.Name }}</td>
+                    <td>{{ customer.Username }}</td>
+                    <td>{{ customer.Email }}</td>
+                    <td>{{ customer.password }}</td>
+                    <td>{{ customer.is_staff }}</td>
+                    <td>{{ customer.is_superuser }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+    {%endif%}
+    </div>
+    
+        <div>
+            {%if products%}
+            <h1>Product Table</h1>
+    
+    <table>
+        <thead>
+            <tr>
+                <th>Product Name</th>
+                <th>Product Info</th>
+                <th>Category</th>
+                <th>Date Created</th>
+                <th>Product Price</th>
+                <th>Product Image</th>
+                <th>Product Stock</th>
+                <th>Category of Categories</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for product in products %}
+            <tr>
+                <td>{{ product.product_name }}</td>
+                <td>{{ product.product_info }}</td>
+                <td>{{ product.category.category_name }}</td>
+                <td>{{ product.Date_created }}</td>
+                <td>{{ product.product_price }}</td>
+                <td>{{ product.product_image.url }}</td>
+                <td>{{ product.product_stock }}</td>
+                <td>{{ product.product_categoryofcategories.category_name }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {%endif%}
+
+            </div>
+
+            <div>
+                {%if orders%}
+                <h1>Order Table</h1>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Order Product</th>
+                            <th>Order User</th>
+                            <th>Date Created</th>
+                            <th>Order Count</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for order in orders %}
+                        <tr>
+                            <td>{{ order.order_product.product_name }}</td>
+                            <td>{{ order.order_user.Name }}</td>
+                            <td>{{ order.Date_created }}</td>
+                            <td>{{ order.order_count }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            {%endif%}
+            </div>
+        
+                <div>
+                    {%if category_of_categories%}
+                      <h1>Category of Categories Table</h1>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Category</th>
+                                <th>subCategory</th>
+                                
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for categoryofcategory in category_of_categories %}
+                            <tr>
+                               
+                                <td>{{ categoryofcategory.categoryfrom.category_name }}</td>
+                                <td>{{ categoryofcategory.category_name }}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                    {%endif%}
+                </div>
+
+
+
+
+</body>
+</html>

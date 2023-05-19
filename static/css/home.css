@@ -1,0 +1,144 @@
+.container{
+    display: grid;
+    grid-template-columns: 2fr 4fr 1fr;
+    
+    
+}
+
+.container-products{
+    display: grid;
+    grid-template-columns: repeat(2, 2fr);
+    gap: 20px;
+    align-items: center;
+    justify-content: center;
+    padding-top: 10px;
+    margin-top: 20%;
+    
+   
+}
+.container-dictionary{
+    display: relative;
+   
+    align-items: center;
+    justify-content: center;
+    padding-top: 10px;
+    margin-top: 20%;
+}
+
+
+.card1{
+    position: relative;
+    
+    background: rgb(72, 72, 255);
+    width: 300px;
+    height:fit-content;
+    border-radius: 15px;
+    padding: 0 10px;
+    
+    margin: 10px 10px;
+    
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.4);
+    transition: all 0.8s ease 0;
+
+    
+    }
+    
+    .card1:hover{
+        background: rgb(105, 105, 168);
+        
+    }
+    .card1:hover .card-body h3 {
+        color: rgb(83, 38, 38);
+    }
+    .card1:hover .card-body button {
+       opacity: 1;
+       
+    }
+    .card1:hover .card-body p{
+        word-wrap: break-word;
+    }
+    .card1:hover .card-body button:hover{
+        background: rgb(0, 0, 140);
+    }
+    .card-header{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        
+        
+        padding: 10px;
+        height: 70%;
+        transform: translateY(-10%);
+    }
+    .image-box {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 200px;
+        background-color: #fff;
+        
+        border-radius: 10px;
+        overflow: hidden;
+        background-color: rgba(0,0,0,0);
+      }
+      .image-box:hover{
+
+        height: 100%;
+      }
+
+    .image-box img {
+        max-width: 100%;
+        max-height: 100%;
+        object-fit:fill;
+        
+        
+      }
+    
+    .card-header h3{
+        color: white;
+        font-weight: 600;
+        font-size: 25px;
+        text-align: center;
+    }
+    .card-header h3:hover{
+        color: blue;
+        font-size: 30px;
+    }
+    .card-body {
+        display: flex;
+        justify-content: center;
+        
+        flex-direction: column;
+        overflow: hidden; /* add overflow property */
+        padding: 10px; 
+    } 
+    .card-body h3{
+        color: rgb(252, 124, 124);
+        font-weight: 600;
+        font-size: 25px;
+        text-align: center;
+        transform: translateY(-90%);
+    }
+    .card-body p{
+        color: white;
+        text-align: center;
+        flex-direction: column;
+    }
+    .card-body button{
+        color: white;
+        background: blue;
+        border-radius: 10px;
+        border: none;
+        outline: none;
+        padding:5px;
+        width:120px;
+        opacity: 0;
+        align-self: center;
+        
+       
+    }
+    .card-body .forthebutton{
+        align-self: center;
+    }

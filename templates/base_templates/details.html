@@ -1,0 +1,51 @@
+{%extends 'main.html'%}
+{%block content%}
+
+<div class="detailcontainer">
+    <div class="image_fragement">
+        <img src="{{product.product_image}}" alt="">
+        
+    </div>
+    <div class="description_fragement">
+        
+        <h1>Product:{{product.product_name}}</h1>
+        <h5>{{product.product_info}}</h5>
+        
+        <h3>Price:{{product.product_price}}$</h3>
+        <h4>{{product.category.category_name}} and {{product.product_categoryofcategories.category_name}}</h4>
+        <form action="" method="post">
+            {%csrf_token%}
+            quantity:<input type="number" id="quantity" name="quantity" min="1" max="{{product.product_stock}}"  value="1">
+            <button type="submit">add to cart</button>
+        </form>
+        <h5>{{product.product_stock}} avaiable</h5>
+        
+        <div>
+            <!-- for promotions of the same category -->
+        </div>
+    </div>
+    <div>
+        
+        <div class="cart-container">
+            {%for o in orders%}
+            <div class="cart-item">
+              <div class="cart-item-name">{{o.order_product.product_name}}</div>
+              <div class="cart-item-price">{{o.order_product.product_price}}$</div>
+              <div class="cart-item-quantity">{{o.order_count}}</div>
+              <div class="btn1-class">
+                <form action="{% url 'base:delete_order' o.id%}" method="post">
+                    {% csrf_token %}
+                    <button class="delete-button" type="submit">Delete</button>
+                </form>
+            </div>
+            </div>
+            {%endfor%}
+            {%if orders%}
+            <div class="btn-class"><form action="" method="post">
+                {%csrf_token%}
+                <button class="buy-button"  type="submit">buy</button>
+            </form></div>
+            {%endif%}
+    </div>
+</div>
+{%endblock content%}

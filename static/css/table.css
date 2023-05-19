@@ -1,0 +1,59 @@
+/* Style for the table */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+  }
+  
+  /* Style for table headers */
+  th {
+    background-color: #f2f2f2;
+    text-align: left;
+    padding: 8px;
+    border: 1px solid #ddd;
+  }
+  
+  /* Alternate row colors for better readability */
+  tr:nth-child(even) {
+    background-color: #f2f7fb;
+  }
+  
+  /* Style for table cells */
+  td {
+    padding: 8px;
+    border: 1px solid #ddd;
+  }
+  
+  /* Hover effect on table rows */
+  tr:hover {
+    background-color: #e3f2fd;
+    cursor: pointer;
+  }
+.toggle-table{
+    color: black;
+}
+
+
+.table-disp{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.table-disp button{ 
+        color: white;
+        background: rgb(72, 72, 255);
+        border-radius: 10px;
+        border: none;
+        outline: none;
+        padding:5px;
+        width:120px;
+        height: 120px;
+        border-radius: 50%;
+        margin: 5px;
+        align-self: center;
+
+}
+.table-disp button:hover{
+  background: blue;
+}

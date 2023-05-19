@@ -1,0 +1,38 @@
+{%load static%}
+<link rel="stylesheet" href="{% static 'css/navbar.css'%}?v={{ version_number }}">
+
+
+<header>
+    <button>logo</button>
+    
+    <input type="text" name="text" class="input" placeholder="Search a product">
+      
+    <nav>
+        <ul class="nav_links"> 
+            <li><a href="{%url 'base:home'%}">Home</a></li>
+            <li class="dropdown">
+                <a class="link" href="#">Categories</a>
+                <div class="dropdown-menu">
+                    <a href="#">Cars</a>
+                    <a href="#">Trucks</a>
+                    <a href="#">Planes</a>
+                    <a href="#">Collections</a>
+                </div>
+            </li>
+            <li><a href="#">Cart</a></li>
+            <li><a href="#">Promotions</a></li>
+        </ul>
+    </nav>
+    
+    <nav>
+        <ul class="nav_links"> 
+            {%if not authent%}
+            <li><a href="{%url 'base:log'%}">Login</a></li>
+            <li><a href="{%url 'base:reg'%}">Register</a></li>
+            {%else%}
+            <li><a href="{%url 'base:logo'%}">Logout</a></li>
+            {%endif%}
+           
+        </ul>
+    </nav>
+</header> 
