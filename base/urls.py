@@ -10,4 +10,5 @@ urlpatterns = [
     path('logo',views.logo,name="logo"),
     path('details<int:pk>',views.details,name="details"),
      path('delete_order/<int:order_id>/', views.orderdelete, name='delete_order'),
+     
 ]

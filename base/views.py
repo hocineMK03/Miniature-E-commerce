@@ -7,15 +7,18 @@ import uuid
 # Create your views here.
 
 def fornav(request,authent):
-     
-     context={
+   
+         
+    context={
           'authent':authent,
      }
-     return render(request,'navbar.html',context)
+    return render(request,'navbar.html',context)
 
 def home(request):
     u=""
     cat=""
+    pro=None
+    searched=None
     session_id=request.COOKIES.get('session_id')
     the_dicts=[]
     the_categories=[]
@@ -47,16 +50,23 @@ def home(request):
               the_dicts.append(the_dict)
              
 
-
     
 
-    print(the_dicts)
-    print(the_categories)
-    fornav(request,authent)
-    context={'dictionary':the_dicts,
+
+    if request.method == 'POST':
+            searched = request.POST.get('searched')
+            pro=Product.objects.filter(product_name__contains=searched)
+            
+            context={'dictionary':the_dicts,
+             'products':pro,
+             'the_categories':the_categories,
+             'authent':authent,}
+    else:
+         context={'dictionary':the_dicts,
              'products':products,
              'the_categories':the_categories,
              'authent':authent,}
+    
     return render(request,'base_templates/home.html',context)
 
 def log(request):
@@ -184,7 +194,7 @@ def details(request,pk):
         authent=True
      except:
         print("not login")
-        return redirect('base:home')
+        return redirect('base:log')
      if request.method=='POST' :
           count=request.POST.get('quantity')
           o=Order.objects.create(
@@ -213,3 +223,6 @@ def orderdelete(request,order_id):
     order =Order.objects.get(id=order_id)
     order.delete()
     return redirect('base:details', pk=order.order_product.id)
+
+
+

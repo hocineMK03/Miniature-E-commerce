@@ -3,10 +3,14 @@
 
 
 <header>
-    <button>logo</button>
+    <button class="rotate">logo</button>
     
-    <input type="text" name="text" class="input" placeholder="Search a product">
-      
+    <form action="{%url 'base:home'%}" method="post">
+        {%csrf_token%}
+        <input type="search" name="searched" class="input" placeholder="Search a product">
+        <button  type="submit">search</button>
+        
+    </form> 
     <nav>
         <ul class="nav_links"> 
             <li><a href="{%url 'base:home'%}">Home</a></li>

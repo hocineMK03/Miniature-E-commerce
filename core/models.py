@@ -31,6 +31,8 @@ class Session_model(models.Model):
 
 class Category(models.Model):
     category_name=models.TextField(max_length=15)
+    def __str__(self):
+        return self.category_name
     class Meta:
         verbose_name_plural = 'categories'
         
@@ -38,7 +40,8 @@ class CategoryofCategories(models.Model):
 
     category_name=models.TextField(max_length=15)
     categoryfrom=models.ForeignKey(Category,on_delete=models.CASCADE)
-    
+    def __str__(self):
+        return self.category_name
 class Product(models.Model):
 
     product_name=models.TextField(max_length=15)
@@ -47,11 +50,13 @@ class Product(models.Model):
     
     Date_created=models.DateTimeField(auto_now_add=True)
     product_price=models.DecimalField(max_digits=6, decimal_places=2,null=False)
-    product_image=models.ImageField(upload_to='static/images/')
+    product_image=models.ImageField(upload_to='images/')
     product_stock=models.IntegerField(default=0)
     product_categoryofcategories=models.ForeignKey(CategoryofCategories,on_delete=models.CASCADE)
     
-
+    # def de(self):
+    #     if self.product_name==None:
+    #         self.product_image.delete()
 
 class Order(models.Model):
     order_product=models.ForeignKey(Product,on_delete=models.CASCADE)

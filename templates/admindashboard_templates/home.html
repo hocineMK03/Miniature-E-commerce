@@ -14,10 +14,22 @@
 
   
 
-    <div class="table-disp"><a href="{%url 'dashboard'%}"><button>Cutomers</button></a>
-        <a href="{%url 'addproducts'%}"><button>Products</button></a>
-        <a href="{%url 'addorders'%}"><button>Orders</button></a>
-        <a href="{%url 'addcategories'%}"><button>Categories</button></a></div>
+    <div class="table-add">
+        <button><a href="">add-data</a></button>
+        <button><a href="">Add Products</a></button>
+        <button><a href="">Add Users</a></button></a>
+       <button><a href="">Add Categories</a></button>
+        <button><a href="">Add sub categories</a></button>
+       </div>
+   
+  
+
+    <div class="table-disp">
+        <button><a href="">add-data</a></button>
+        <button><a href="{%url 'dashboard'%}">Cutomers</a></button>
+        <button><a href="{%url 'addproducts'%}">Products</a></button>
+        <button><a href="{%url 'addorders'%}">Orders</a></button>
+        <button><a href="{%url 'addcategories'%}">Categories</a></button></div>
 
 
 
@@ -43,6 +55,10 @@
                     <td>{{ customer.password }}</td>
                     <td>{{ customer.is_staff }}</td>
                     <td>{{ customer.is_superuser }}</td>
+                    <td><form action="{% url 'delete_customer' customer.id %}" method="POST">
+                        {% csrf_token %}
+                        <button type="submit">Delete</button>
+                    </form></td>
                 </tr>
             {% endfor %}
         </table>
@@ -77,6 +93,10 @@
                 <td>{{ product.product_image.url }}</td>
                 <td>{{ product.product_stock }}</td>
                 <td>{{ product.product_categoryofcategories.category_name }}</td>
+                <td><form action="{% url 'delete_product' product.id %}" method="POST">
+                    {% csrf_token %}
+                    <button type="submit">Delete</button>
+                </form></td>
             </tr>
             {% endfor %}
         </tbody>
@@ -104,6 +124,10 @@
                             <td>{{ order.order_user.Name }}</td>
                             <td>{{ order.Date_created }}</td>
                             <td>{{ order.order_count }}</td>
+                            <td><form action="{% url 'delete_order' order.id %}" method="POST">
+                                {% csrf_token %}
+                                <button type="submit">Delete</button>
+                            </form></td>
                         </tr>
                         {% endfor %}
                     </tbody>
@@ -128,6 +152,10 @@
                                
                                 <td>{{ categoryofcategory.categoryfrom.category_name }}</td>
                                 <td>{{ categoryofcategory.category_name }}</td>
+                                <td><form action="{% url 'delete_category' categoryofcategory.id %}" method="POST">
+                                    {% csrf_token %}
+                                    <button type="submit">Delete</button>
+                                </form></td>
                             </tr>
                             {% endfor %}
                         </tbody>
